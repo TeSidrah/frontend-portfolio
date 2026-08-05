@@ -1,0 +1,25 @@
+Interactive Portfolio Page
+
+You'll extend your existing HTML/CSS portfolio site (already live on GitHub Pages) with JavaScript interactivity — same structure, 
+new behavior layered on top.
+
+Requirements:
+
+- A working mobile navigation menu — a hamburger button that opens and closes a nav menu using JavaScript
+
+- A contact form with client-side validation — name, email, and message fields; 
+JS checks all fields are filled and the email looks valid before submission, showing a clear error message if something's wrong
+
+- At least one more interactive element of your choice — a dark/light mode toggle, 
+a skills section that reveals details on click, a project filter by category, a scroll-to-top button, or something else you come up with
+
+- All JS written in a separate .js file, linked to the HTML — no inline JavaScript
+
+What done looks like: 
+the portfolio is live at its GitHub Pages URL, 
+the hamburger menu opens and closes on click, 
+the contact form catches bad input and shows errors before submission, 
+your third interactive feature works correctly, 
+the JS lives in its own file, 
+and the commit history shows the work.
+

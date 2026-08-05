@@ -1,0 +1,8 @@
+Updated deferred / polish backlog:
+
+Hamburger-to-X icon morph animation
+aria-live region on error messages
+Dropdown-style category filter (only if categories grow significantly)
+Pagination for the Projects grid
+Active state indicator on currently selected filter button
+Switch filter button "All" check from reference comparison to dataset.category === 'all', and add button.dataset.category = category to generated buttons for consistency
