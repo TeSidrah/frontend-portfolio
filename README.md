@@ -2,7 +2,7 @@
 
 My personal frontend portfolio — the current home base for the frontend path. Built from scratch with HTML, CSS, and JavaScript, no frameworks.
 
-**Live site:** _(added once deployed)_
+**Live site:** https://tesidrah.github.io/frontend-portfolio/
 
 ## What this is
 
