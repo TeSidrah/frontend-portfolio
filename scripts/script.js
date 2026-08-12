@@ -12,6 +12,9 @@ const submitButton = document.querySelector('#form-button');
 const successMessage = document.createElement('p');
 successMessage.textContent = 'Thanks for reaching out! We have received your message and will get back to you';
 successMessage.classList.add('success-message');
+const failureMessage = document.createElement('p');
+failureMessage.textContent = 'Something went wrong on our end. Try again, or reach out directly using the links below.';
+failureMessage.classList.add('error-status-message');
 const projectItems = document.querySelectorAll('.project-item');
 let categories = [];
 const filterContainer = document.querySelector('.filter-container');
@@ -73,18 +76,40 @@ function isEmail() {
   }
 }
 
+async function submitForm() {
+  const formData = new FormData(form);
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      failureMessage.remove();
+      form.appendChild(successMessage);
+      form.reset();
+    } else {
+      successMessage.remove();
+      form.appendChild(failureMessage);
+    }
+  } catch (error) {
+    successMessage.remove();
+    form.appendChild(failureMessage);
+  }
+}
+
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const nameValid = validate(name, nameError);
   const messageValid = validate(message, messageError);
   const emailValid = isEmail()
-
   if (nameValid && messageValid && emailValid) {
-    form.appendChild(successMessage);
-    form.reset();
+    submitForm()
   } else {
     successMessage.remove();
+    failureMessage.remove();
   }
 });
 
