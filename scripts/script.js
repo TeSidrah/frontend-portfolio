@@ -9,18 +9,24 @@ const messageError = document.querySelector('#message-error');
 const emailError = document.querySelector('#email-error');
 const nameError = document.querySelector('#username-error');
 const submitButton = document.querySelector('#form-button');
-const successMessage = document.createElement('p');
-successMessage.textContent = 'Thanks for reaching out! We have received your message and will get back to you';
-successMessage.classList.add('success-message');
-const failureMessage = document.createElement('p');
-failureMessage.textContent = 'Something went wrong on our end. Try again, or reach out directly using the links below.';
-failureMessage.classList.add('error-status-message');
+const submitStateMessage = document.querySelector("#form-status");
 const projectItems = document.querySelectorAll('.project-item');
 let categories = [];
 const filterContainer = document.querySelector('.filter-container');
 const buttons = [];
 const filterButton = document.querySelector('.filter-button');
 
+function onFormSucess () {
+  submitStateMessage.textContent = 'Thanks for reaching out! We have received your message and will get back to you';
+  submitStateMessage.classList.remove('error-status-message');
+  submitStateMessage.classList.add('success-message');
+}
+
+function onFormFailure (){
+  submitStateMessage.textContent = 'Something went wrong on our end. Try again, or reach out directly using the links below.';
+  submitStateMessage.classList.remove('success-message');
+  submitStateMessage.classList.add('error-status-message');
+}
 
 
 function changeAttribute(navState) {
@@ -86,16 +92,13 @@ async function submitForm() {
     });
 
     if (response.ok) {
-      failureMessage.remove();
-      form.appendChild(successMessage);
+      onFormSucess ()
       form.reset();
     } else {
-      successMessage.remove();
-      form.appendChild(failureMessage);
+      onFormFailure ()
     }
   } catch (error) {
-    successMessage.remove();
-    form.appendChild(failureMessage);
+    onFormFailure ()
   }
 }
 
@@ -108,8 +111,8 @@ form.addEventListener('submit', (event) => {
   if (nameValid && messageValid && emailValid) {
     submitForm()
   } else {
-    successMessage.remove();
-    failureMessage.remove();
+    submitStateMessage.textContent = "" ;
+    submitStateMessage.classList.remove('success-message', 'error-status-message');
   }
 });
 

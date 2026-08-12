@@ -262,7 +262,7 @@
                 placeholder="Your name"
                 aria-describedby="username-error"
               />
-              <span class="error-message" id="username-error">Username field can not be empty</span>
+              <span class="error-message" id="username-error" aria-live="polite">Username field can not be empty</span>
             </div>
             <div class="form-item">
               <label for="email">Email</label>
@@ -273,7 +273,7 @@
                 placeholder="you@example.com"
                 aria-describedby="email-error"
               />
-              <span class="error-message" id="email-error">Email field can not be empty</span>
+              <span class="error-message" id="email-error" aria-live="polite">Email field can not be empty</span>
             </div>
             <div class="form-item">
               <label for="message">Message</label>
@@ -283,9 +283,10 @@
                 placeholder="Your message"
                 aria-describedby="message-error"
               ></textarea>
-              <span class="error-message" id="message-error">Message field can not be empty</span>
+              <span class="error-message" id="message-error" aria-live="polite">Message field can not be empty</span>
             </div>
             <button type="submit" id="form-button">Send message</button>
+            <p id="form-status" aria-live="polite"></p>
           </form>
           <div>
             <h3>Direct links:</h3>
