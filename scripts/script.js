@@ -8,7 +8,6 @@ const form = document.querySelector('form');
 const messageError = document.querySelector('#message-error');
 const emailError = document.querySelector('#email-error');
 const nameError = document.querySelector('#username-error');
-const submitButton = document.querySelector('#form-button');
 const submitStateMessage = document.querySelector("#form-status");
 const projectItems = document.querySelectorAll('.project-item');
 let categories = [];
@@ -16,7 +15,7 @@ const filterContainer = document.querySelector('.filter-container');
 const buttons = [];
 const filterButton = document.querySelector('.filter-button');
 
-function onFormSucess () {
+function onFormSuccess () {
   submitStateMessage.textContent = 'Thanks for reaching out! We have received your message and will get back to you';
   submitStateMessage.classList.remove('error-status-message');
   submitStateMessage.classList.add('success-message');
@@ -92,7 +91,7 @@ async function submitForm() {
     });
 
     if (response.ok) {
-      onFormSucess ()
+      onFormSuccess ()
       form.reset();
     } else {
       onFormFailure ()
